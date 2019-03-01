@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector } from '@angular/core';
+import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 
 import { AppComponent } from './app.component';
@@ -10,7 +10,8 @@ import { HelloComponent } from "./components/Hello/hello.component";
   declarations: [AppComponent, HelloComponent],
   imports: [BrowserModule],
   providers: [],
-  entryComponents: [AppComponent, HelloComponent]
+  entryComponents: [AppComponent, HelloComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]  // to support custom components inside the module 
 })
 export class AppModule {
   constructor(private injector: Injector) {
