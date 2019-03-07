@@ -4,13 +4,13 @@ import { createCustomElement } from '@angular/elements';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from "./components/Hello/hello.component";
-
+import { RadioComponent } from "./components/RadioButton/radio.component";
 
 @NgModule({
-  declarations: [AppComponent, HelloComponent],
+  declarations: [AppComponent, HelloComponent, RadioComponent],
   imports: [BrowserModule],
   providers: [],
-  entryComponents: [AppComponent, HelloComponent],
+  entryComponents: [AppComponent, HelloComponent, RadioComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]  // to support custom components inside the module 
 })
 export class AppModule {
@@ -20,6 +20,10 @@ export class AppModule {
 
     const e2 = createCustomElement(HelloComponent, { injector});
     customElements.define('hello-element', e2);
+
+    const e3 = createCustomElement(RadioComponent, { injector});
+    customElements.define('radio-element', e3);
+    
   }
   ngDoBootstrap() {}
  }
