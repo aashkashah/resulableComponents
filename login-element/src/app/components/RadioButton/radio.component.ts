@@ -5,6 +5,7 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
     templateUrl: './radio.component.html',
     //encapsulation: ViewEncapsulation.Native // commented out to support edge
   })
+  
   export class RadioComponent {
     @Input()
     public name: string;

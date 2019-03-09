@@ -1,0 +1,19 @@
+
+<div *ngFor="let label of labels.split(',')">
+    <input type="radio" id="uhrs_radio_{{label}}" name='uhrs_radio_{{label}}' value={{label}} style="background-color: red"> {{ label }}
+</div>
+
+<!-- <div *ngFor="let enum of labels">
+    <label for="enum_answer_{{enum.name}}">
+        <input id="enum_answer_{{enum.name}}" [value]='enum.name' type="radio" name="enums">
+        {{enum.name}}
+    </label>
+</div> -->
+
+<div *ngFor="let enum of radioinput">
+    <label for="enum_answer_{{enum.label}}">
+        <span **ngIf="enum.backgroundcolor != '' ? [ngStyle]="{'background-color': enum.backgroundcolor}" > 
+            <input id="enum_answer_{{enum.label}}" [value]='enum.label' type="radio" name="enums">
+            {{enum.label}} </span>
+    </label>
+</div>
