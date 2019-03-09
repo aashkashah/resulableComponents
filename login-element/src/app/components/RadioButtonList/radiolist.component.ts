@@ -1,18 +1,43 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input, OnInit, ChangeDetectionStrategy, ElementRef, ChangeDetectorRef } from '@angular/core';
+
 
 @Component({
     selector: 'radiolist-element',
-    templateUrl: './radiolist.component.html'
+    templateUrl: './radiolist.component.html',
+    //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class RadioListComponent {
+export class RadioListComponent implements OnInit {
     
-    public labels = ['test cat1', 'test cat2'];
+     // to do: see if we can pass complex objects from client
+    @Input()
+    public labels: string;
+    
+    @Input()
+    public backgroundcolors: string;
 
-    debugger;
-    public enum_details = [
-        {name: 'aashka'},
-        {name: 'shah'},
-        {name: 'angular'},
-      ]
+    public radioinput: IRadioInput[] = []; 
+
+    constructor() {
+       //this.radioinput = [];
+    }
+
+    ngOnInit() {
+
+        let labelsArray: string[] =   JSON.parse(this.labels); 
+        let colorArray: string[] =  JSON.parse(this.backgroundcolors);
+
+        for(let i = 0; i < labelsArray.length; i++)
+        {
+            let radio: IRadioInput = {label: labelsArray[i], backgroundcolor: colorArray[i]};
+            this.radioinput.push(radio);
+        }
+
+    }
+   
+}
+
+interface IRadioInput {
+    label: string;
+    backgroundcolor: string;
 }
